@@ -1,0 +1,243 @@
+.row.content {
+  height: 100vh;
+
+}
+
+/* On small screens, set height to 'auto' for grid */
+@media screen and (max-width: 768px) {
+      .row.content {height: auto;}
+
+        h1 {font-size:8vw !important;}
+        h2 {font-size:7vw !important;}
+        h3 {font-size:6vw !important;}
+        h4 {font-size:5vw !important;}
+        h5,label,input,td,th {font-size:4vw !important;}
+        h6,a,button,#dtBasicExample_info {font-size:3vw !important;}
+
+        .row-height-space {
+        height:20px !important;
+}
+    .css-username{
+    line-height:2.5 !important;
+}
+}
+
+
+.div-left{
+    #background-color:#253939 !important;
+    box-shadow: 5px 5px #f2f2f2 !important;
+    background-image: url('Image/bg-img.jpg');
+
+}
+
+.txt-welcome-msg, .css-book-name{
+    color:#253939;
+    text-shadow: 2px 2px #cccccc;
+}
+.txt-greet-msg{
+    color:#FB8B4B;
+    text-shadow: 1px 1px #cccccc;
+}
+
+.row-space{
+	height:100px;
+}
+
+.btn-primary {
+    color: #DCDCC5;
+    background-color: #253939 !important;
+    border-color: #253939 !important;
+
+}
+
+.btn-primary:hover {
+  color: #DCDCC5;
+   background-color: #ff884d !important;
+  border-color: #ff884d !important;
+
+}
+
+.row-height-space{
+    height:25px
+}
+
+.div-border{
+    border:1px solid #d9d9d9;
+    background-color: #ffffff;
+    box-shadow: 5px 5px #f2f2f2
+}
+
+.error-msg{
+    color:red;
+}
+
+.div-content-align{
+    text-align:center;
+}
+
+.form-control::placeholder {
+  font-size: 0.95rem;
+  color: #aaa;
+  font-style: italic;
+}
+
+/*---Start rating star ----*/
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+/*---End rating star ----*/
+
+.dataTables_wrapper .dataTables_length,.dataTables_wrapper .dataTables_filter{
+    display:none;
+}
+
+.table.dataTable thead th, table.dataTable thead td,.table-bordered td, .table-bordered th{
+    border-bottom: none;
+}
+
+input[type="submit" i] {
+color:#ff9c5f !important;
+border-left:none !important;
+border-right:none !important;
+border-top : none !important;
+border-bottom: #ff9c5f !important;
+background-color:#fff !important;
+
+}
+input[type="submit" i]:focus {
+    outline:none;
+    border-bottom:1px solid #ccc;
+}
+
+.table-striped tbody tr:nth-of-type(odd){
+background-color:#fff !important;
+}
+
+.css-username{
+color:#558188;
+line-height:2;
+}
+.css-rating-value{
+color:#ff9c5f;
+text-align:center;
+}
+
+.css-rating-label{
+text-align:center;
+color:#ccc;
+}
+
+.css-reviewtxt{
+    float:left;
+}
+
+.css-userreviews{
+color:#5FA292;
+}
+
+.css-txt-align{
+text-align:right;
+}
+
+.btn-logout{
+    border:none;
+    background-color:#ffffff;
+    width:25px;
+}
+
+.btn-logout:active{
+    border:none;
+}
+.btn-logout:focus{
+    border:none;
+    outline:none;
+}
+.btn:focus{
+    outline:none;
+}
+
+
+/*---Start side navigation menu ---*/
+.sidenav {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #f2f2f2; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: underline;
+  font-size: 20px;
+  color: #253939;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #253939;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s;
+  padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+/*---End side navigation menu ---*/
+

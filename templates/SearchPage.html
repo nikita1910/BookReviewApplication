@@ -1,0 +1,188 @@
+{% extends "ApplicationLayout.html" %}
+
+{% block body %}
+
+<div class="row-height-space">
+
+</div>
+
+
+<div class="row">
+    <div class="col-sm-6 col-6">
+    </div>
+
+    <div class="col-sm-3 col-4" style="text-align: right;">
+        <h6 class="font-italic css-username">Hi, {{ name }}</h6>
+    </div>
+    <div class="col-sm-2 col-2" style="text-align: right;">
+        <form action="{{ url_for('main_login')}}" method="GET">
+
+            <!--            <img type="submit" src="{{ url_for('static',filename='Image/img-logout.png') }}" style="width:25px;" onclick="logout()">-->
+            <button type="submit" id="btnLogout" class="btn-logout" data-toggle="tooltip" data-placement="top" title="Log out"><img
+                    src="{{ url_for('static',filename='Image/img-logout.png') }}" style="width:20px;"></button>
+        </form>
+    </div>
+    <div class="col-sm-1">
+
+    </div>
+</div>
+
+<div class="row-height-space">
+
+</div>
+
+<div class="row">
+    <div class="col-sm-1">
+
+    </div>
+    <div class="col-sm-10 col-12">
+        <h6>Search book here</h6>
+    </div>
+    <div class="col-sm-1">
+
+    </div>
+</div>
+<form action="{{ url_for('get_book_info')}}" method="POST">
+    <div class="row">
+        <div class="col-sm-1">
+
+        </div>
+        <div class="col-sm-10 col-12">
+
+            <div class="form-group div-content-align">
+                <input class="form-control" type="text" placeholder="ISBN/Title/Author"
+                       aria-label="Search" name="searchElement">
+            </div>
+
+        </div>
+        <div class="col-sm-1">
+
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-1">
+
+        </div>
+        <div class="col-sm-10 col-12">
+
+            <div class="form-group div-content-align">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+
+        </div>
+        <div class="col-sm-1">
+
+        </div>
+    </div>
+</form>
+
+
+<div class="row-height-space">
+
+
+</div>
+{% if book_info != '' %}
+<div class="row ">
+    <div class="col-sm-1">
+
+    </div>
+    <div class="col-sm-10 col-12">
+        <h6>Click on ISBN for more book information and reviews.</h6>
+    </div>
+    <div class="col-sm-1">
+
+    </div>
+</div>
+
+
+<div class="row ">
+    <div class="col-sm-1">
+
+    </div>
+    <div class="col-sm-10 col-12">
+        <form action="{{ url_for('check_review')}}" method="POST">
+            <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0"
+                   width="100%">
+                <thead>
+                <tr>
+                    <th class="th-sm font-italic">ISBN</th>
+                    <th class="th-sm">Title</th>
+                    <th class="th-sm">Author</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for x in book_info %}
+                <tr>
+                    <td>
+                        <input type="submit" name="isbn" class="font-italic" value="{{ x[0] }} ">
+                    </td>
+                    <td class="font-italic"> {{ x[1] }}</td>
+                    <td class="font-italic"> {{ x[2] }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <div class="col-sm-1">
+
+    </div>
+</div>
+
+{% endif %}
+
+<div class="row-height-space">
+
+
+</div>
+
+<div class="row">
+    <div class="col-sm-1 ">
+
+    </div>
+    <div class="col-sm-10 col-12">
+        <h5 class="font-italic">Good thoughts about reading</h5>
+    </div>
+    <div class="col-sm-1">
+
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-sm-1">
+
+    </div>
+    <div class="col-sm-10 col-12">
+        <ul>
+
+            <li>
+                <h6 class="font-italic">“In the case of good books,
+                    the point is not to see how many of them you can get through,
+                    but rather how many can get through to you.” – Mortimer J. Adler</h6>
+
+            </li>
+
+            <li>
+                <h6 class="font-italic">“A capacity, and taste, for reading gives access to whatever
+                    has already been discovered by others. —Abraham Lincoln”</h6>
+
+            </li>
+
+            <li>
+                <h6 class="font-italic">“Reading is an exercise in empathy; an exercise in walking in
+                    someone else’s shoes for a while." —Malorie Blackman</h6>
+
+            </li>
+
+        </ul>
+    </div>
+    <div class="col-sm-1">
+
+    </div>
+</div>
+
+
+{% endblock %}

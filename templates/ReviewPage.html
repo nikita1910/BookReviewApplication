@@ -1,0 +1,227 @@
+{% extends "ApplicationLayout.html" %}
+
+{% block body %}
+
+<div class="row-height-space">
+
+</div>
+
+
+<div class="row">
+<div class="col-sm-1">
+
+    </div>
+    <div class="col-sm-5 col-5">
+        <a href="{{ url_for('search_page') }}" class="font-italic">Back to search</a>
+    </div>
+
+    <div class="col-sm-3 col-5" style="text-align: right;">
+        <h6 class="font-italic css-username">Hi, {{ name }}</h6>
+    </div>
+    <div class="col-sm-2 col-2" style="text-align: right;">
+        <form action="{{ url_for('main_login')}}" method="GET">
+
+            <!--            <img type="submit" src="{{ url_for('static',filename='Image/img-logout.png') }}" style="width:25px;" onclick="logout()">-->
+            <button type="submit" id="btnLogout" class="btn-logout" data-toggle="tooltip" data-placement="top" title="Log out"><img
+                    src="{{ url_for('static',filename='Image/img-logout.png') }}" style="width:20px;"></button>
+            <!--            class="btn btn-primary"-->
+        </form>
+    </div>
+    <div class="col-sm-1">
+
+    </div>
+</div>
+
+<div class="row-height-space">
+
+</div>
+
+<form action="{{ url_for('submit_review_rating')}}" method="POST">
+
+    <div class="row">
+        <div class="col-sm-1">
+        </div>
+        <div class="col-sm-1 col-2">
+            <img src="{{ url_for('static',filename='Image/img-book-icon.png') }}" style="width:60px;float:left">
+        </div>
+        <div class="col-sm-9 col-10">
+            <h2 class="css-book-name">{{ bookDetails['title'] }}</h2>
+            <input type="text" name="isbn" value="{{ bookDetails['isbn'] }}" style="display:none">
+        </div>
+        <div class="col-sm-1 ">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-1">
+        </div>
+        <div class="col-sm-10 col-12">
+            <h5 style="color:#3c5d5d">by {{ bookDetails['authors']['author']['name'] }}</h5>
+        </div>
+        <div class="col-sm-1">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-1">
+        </div>
+        <div class="col-sm-10 col-12">
+            <label class="font-italic">{{ description }}</label>
+        </div>
+        <div class="col-sm-1">
+        </div>
+    </div>
+
+    <div class="row-height-space">
+
+    </div>
+
+    <div class="row">
+        <div class="col-sm-1">
+        </div>
+        <div class="col-sm-3 col-4">
+            <h4 class="font-italic css-rating-value">{{ bookDetails['average_rating'] }}</h4>
+        </div>
+        <div class="col-sm-3 col-4">
+            <h4 class="font-italic css-rating-value">{{ bookDetails['ratings_count'] }}</h4>
+        </div>
+        <div class="col-sm-4 col-4">
+            <h4 class="font-italic css-rating-value">{{ bookDetails['text_reviews_count'] }}</h4>
+        </div>
+        <div class="col-sm-1">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-1">
+        </div>
+        <div class="col-sm-3 col-4 css-rating-label">
+            <h6>Average rating</h6>
+        </div>
+        <div class="col-sm-3 col-4 css-rating-label">
+            <h6>Rating count</h6>
+        </div>
+        <div class="col-sm-4 col-4 css-rating-label">
+            <h6>Text review count</h6>
+        </div>
+        <div class="col-sm-1">
+        </div>
+    </div>
+
+    <div class="row-height-space" style="border-top:1px solid #f2f2f2">
+
+    </div>
+    <div class="row">
+        <div class="col-sm-1">
+        </div>
+        <div class="col-sm-10 col-12">
+            <h6>Make your rating and review</h6>
+        </div>
+        <div class="col-sm-1">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-1">
+        </div>
+        <div class="col-sm-5 col-7">
+           <div class="rate">
+                <input type="radio" id="star5" name="rate" value="5" onclick="checkRadio(value)"/>
+                <label for="star5" title="text">5 stars</label>
+                <input type="radio" id="star4" name="rate" value="4" onclick="checkRadio(value)"/>
+                <label for="star4" title="text">4 stars</label>
+                <input type="radio" id="star3" name="rate" value="3" onclick="checkRadio(value)"/>
+                <label for="star3" title="text">3 stars</label>
+                <input type="radio" id="star2" name="rate" value="2" onclick="checkRadio(value)"/>
+                <label for="star2" title="text">2 stars</label>
+                <input type="radio" id="star1" name="rate" value="1" onclick="checkRadio(value)"/>
+                <label for="star1" title="text">1 star</label>
+           </div>
+            <input type="text" id="ratingVal" name="rate" style="display:none"></input>
+        </div>
+
+
+        <div class="col-sm-5 col-5">
+            <div class="row">
+                <div class="form-group css-reviewtxt">
+                    <textarea class="form-control" id="txtreview" name="review"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <button type="submit" class="btn btn-primary" id="btnsubmitreview">Submit</button>
+
+            </div>
+        </div>
+
+        <div class="col-sm-1 ">
+        </div>
+
+    </div>
+
+    <div class="row-height-space" style="border-bottom:1px solid #f2f2f2">
+
+    </div>
+  <div class="row-height-space">
+
+    </div>
+
+    <div class="row">
+        <div class="col-sm-1">
+        </div>
+        <div class="col-sm-10 col-12">
+            <h6>Community reviews</h6>
+        </div>
+        <div class="col-sm-1">
+        </div>
+    </div>
+    {% for x in userreview %}
+    <div class="row">
+        <div class="col-sm-1">
+        </div>
+        <div class="col-sm-10 col-12">
+            <img src="{{ url_for('static',filename='Image/img-user.jpg') }}" style="width:25px;float:left">
+              {% if x[1] !=  name  %}
+            <h6 class="font-italic ">{{ x[1] }}</h6>
+             {% else %}
+             <h6 class="font-italic ">You</h6>
+            {% endif %}
+        </div>
+        <div class="col-sm-1">
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-1">
+        </div>
+        <div class="col-sm-10 col-12">
+            <h6 style="float:left;color:#ccc">Rating:&nbsp;</h6>
+             {% if x[3] != '' %}
+            <h6 class="font-italic " style="color:#ffcc00;">{{ x[3] }}</h6>
+            {% else %}
+                <h6 class="font-italic " style="color:#ffcc00;">-</h6>
+             {% endif %}
+        </div>
+        <div class="col-sm-1">
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-1">
+        </div>
+        <div class="col-sm-10 col-12">
+            <h6 class="font-italic css-userreviews">-{{ x[2] }}</h6>
+        </div>
+        <div class="col-sm-1">
+        </div>
+    </div>
+
+    {% endfor %}
+
+</form>
+
+<div class="row-height-space">
+</div>
+
+
+{% endblock %}

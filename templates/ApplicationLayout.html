@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Book Review App</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style/StyleSheet.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='bootstrap-4.4.1-dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='bootstrap-4.4.1-dist/css/jquery.dataTables.min.css') }}">
+
+    <script src="{{ url_for('static',filename='jquery/jquery.min.js') }}"></script>
+     <script src="{{ url_for('static',filename='ajax/libs/popper.js/1.16.0/umd/popper.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='bootstrap-4.4.1-dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='mainScript/mainScript.js') }}"></script>
+    <script src="{{ url_for('static',filename='bootstrap-4.4.1-dist/js/jquery.dataTables.min.js') }}"></script>
+
+
+
+
+
+
+</head>
+<body>
+
+
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="{{ url_for('main_login') }}" class="font-italic">Home</a>
+    <a href="{{ url_for('app_info') }}" class="font-italic">About</a>
+<!--    <a href="{{ url_for('app_service') }}" class="font-italic">Services</a>-->
+</div>
+
+<div Class="container-fluid">
+    <div class="row content">
+        <div class="col-sm-3 div-left" style="background-image:url({{url_for('static',filename='Image/bg-img.jpg')}})">
+
+            <div class="row-height-space">
+
+            </div>
+
+            <div class="row ">
+                <div class="col-sm-1 col-1">
+                    <img src="{{ url_for('static',filename='Image/img-menu.png') }}" style="width:30px;float:left;cursor:pointer"
+                         onclick="openNav()" data-toggle="tooltip" data-placement="top" title="Menu">
+                </div>
+                <div class="col-sm-1 col-1"></div>
+                <div class="col-sm-10 col-10">
+                    <H4 class="font-italic txt-welcome-msg">BookReviews.com</H4>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-sm-9 div-right ">
+
+            {% block body %}
+
+            {% endblock %}
+        </div>
+    </div>
+
+</div>
+</div>
+
+
+<div class="row-height-space">
+</div>
+
+
+</body>
+</html>
